@@ -162,16 +162,13 @@ check out and return those publications.
 
 (1) <b>Add publication</b> - This allows the librarian to enter data
     associated with a new publication.
-(2) List all publications - All data known about each publication
+(2) <b>List all publications</b> - All data known about each publication
     in the library is listed.
-(3) Check out publication - Enter the data for patrons who check out
+(3) <b>Check <span font_style = 'italic'>out</span> publication</b> - Enter the data for patrons who check out
     a publication, and mark that publication as checked out.
-(4) Check in publication - Select a publication and mark it as checked in.
-(5) Add patron - This allows the librarian to enter data associated
-    with a new library patron.
-(6) List patrons - All data know about each patron of the library.
-(9) Help - Print this text.
-(0) Exit - Exit the program. WARNING: The current version does NOT
+(4) <b>Check <span font_style = 'italic'>in</span> publication</b> - Select a publication and mark it as checked in.
+(9) <span fgcolor='#00aa00'>Help</span> - Print this text.
+(0) <span fgcolor='#aa0000'>Exit</span> - Exit the program. WARNING: The current version does NOT
     save any entered data. This feature will be added in the "next version".
 
 Use the '99' command to pre-populate test data.
