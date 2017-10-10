@@ -2,6 +2,7 @@
 #include "publication.h"
 #include "enums.h"
 #include "dialogs.h"
+#include "main_window.h"
 
 #include <iostream>
 #include <vector>
