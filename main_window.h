@@ -1,8 +1,14 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include "library.h"
 #include "publication.h"
+#include "enums.h"
+#include "dialogs.h"
 
+#include <iostream>
+#include <vector>
+#include <string>
 #include <gtkmm.h>
 
 class Main_window : public Gtk::Window {
@@ -16,5 +22,7 @@ class Main_window : public Gtk::Window {
     void on_check_in_click();
     void on_about_click();
     void on_quit_click();
+  private:
+    Library *library;
 };
 #endif
