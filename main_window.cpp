@@ -1,7 +1,7 @@
 #include "main_window.h"
 
 Main_window::Main_window() {
-  set_default_size(400, 150);
+  set_default_size(400, 200);
 
   Gtk::Box *vbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
   add(*vbox);
@@ -27,7 +27,7 @@ Main_window::Main_window() {
   menuitem_add->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_add_click));
   pubmenu->append(*menuitem_add);
 
-  Gtk::MenuItem *menuitem_list = Gtk::manage(new Gtk::MenuItem("List", true));
+  /*Gtk::MenuItem *menuitem_list = Gtk::manage(new Gtk::MenuItem("List", true));
   menuitem_list->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_list_click));
   pubmenu->append(*menuitem_list);
 
@@ -46,5 +46,77 @@ Main_window::Main_window() {
 
   Gtk::MenuItem *menuitem_about = Gtk::manage(new Gtk::MenuItem("About", true));
   menuitem_about->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_about_click));
-  helpmenu->append(*menuitem_about);
+  helpmenu->append(*menuitem_about);*/
+
+  vbox->show_all();
+}
+
+Main_window::~Main_window() { }
+
+void Main_window::on_add_click() {
+  string book_title, author, copyright, isbn, temp_str, msg;
+  int temp_num;
+  Genre genre;
+  Media media;
+  Age age;
+
+  book_title = Dialogs::input("Title?");
+  //if (book_title == "CANCEL") on_quit_click();
+
+  author = Dialogs::input("Author?");
+  //if (author == "CANCEL") on_quit_click();
+
+  copyright = Dialogs::input("Copyright date?");
+  //if (copyright == "CANCEL") on_quit_click();
+
+
+  msg = "";
+  for (int i = 0; i < genres.size(); ++i)
+     msg += "  " + to_string(i) + ") " + genres[i] + "\n";
+
+  temp_str = Dialogs::input(msg, "Select a Genre");
+  //if (temp_str == "CANCEL") on_quit_click();
+
+  temp_num = atoi(temp_str.c_str());
+
+  genre = (Genre) temp_num;
+
+
+  msg = "";
+  for (int i = 0; i < medias.size(); ++i)
+    msg += "  " + to_string(i) + ") " + medias[i] + "\n";
+
+  temp_str = Dialogs::input(msg, "Select a Media");
+  //if (temp_str == "CANCEL") on_quit_click();
+
+  temp_num = atoi(temp_str.c_str());
+
+  media = (Media) temp_num;
+
+
+  msg = "";
+  for (int i = 0; i < ages.size(); ++i)
+    msg += "  " + to_string(i) + ") " + ages[i] + "\n";
+
+  temp_str = Dialogs::input(msg, "Select a Target Age");
+  //if (temp_str == "CANCEL") on_quit_click();
+
+  temp_num = atoi(temp_str.c_str());
+
+  age = (Age) temp_num;
+
+
+  isbn = Dialogs::input("ISBN?");
+  //if (isbn == "CANCEL") on_quit_click();
+
+
+  try {
+    library->add_publication(Publication(book_title, author, copyright, genre, media, age, isbn));
+  } catch (Publication::Invalid_transaction e) {
+    Dialogs::message("Unable to add!", "ERROR!");
+  }
+}
+
+void Main_window::on_quit_click() {
+  close();
 }
