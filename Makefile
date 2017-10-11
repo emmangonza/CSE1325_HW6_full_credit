@@ -1,16 +1,15 @@
 # CSE_1325 Homework 4
 
-output: main.o main_window.o publication.o library.o
+output: main.o main_window.o publication.o library.o dialogs.o
 	g++ --std=c++11 -o output main.o main_window.o publication.o library.o dialogs.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
-	./output
 
-main.o: dialogs.o *.h
+main.o: main.cpp main_window.h
 	g++ --std=c++11 -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 main_window.o: main_window.cpp main_window.h
 	g++ --std=c++11 -c main_window.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-dialogs.o: dialogs.cpp *.h
+dialogs.o: dialogs.cpp dialogs.h
 	g++ --std=c++11 -c dialogs.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 test_library: test_library.o library.o publication.o
