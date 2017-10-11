@@ -13,9 +13,17 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-  Gtk::Main kit(argc, argv);
+  // Gtk::Main kit(argc, argv);
+  auto app =
+    Gtk::Application::create(argc, argv, "cse1325.hw6.lms");
 
-  Library library;
+  Main_window win;
+
+  win.set_title("Library Management System");
+
+  return app->run(win);
+
+  /*Library library;
 
   string cmd_str = "";
   int cmd_num = -1;
@@ -184,6 +192,6 @@ Use the '99' command to pre-populate test data.
    if (cmd_num < 0 || (4 < cmd_num && cmd_num < 9) || (9 < cmd_num && cmd_num < 99) || (99 < cmd_num)) { // Invalid command
      Dialogs::message("Invalid command - type 9 for help", "ERROR!");
    }
-  }
-  return EXIT_SUCCESS;
+ }
+  return EXIT_SUCCESS;*/
 }
