@@ -18,6 +18,7 @@ class Main_window : public Gtk::Window {
   protected:
     void on_add_click();
     void on_list_click();
+    void on_preload_click();
     void on_check_out_click();
     void on_check_in_click();
     void on_about_click();
